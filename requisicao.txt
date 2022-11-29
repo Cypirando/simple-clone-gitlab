@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json

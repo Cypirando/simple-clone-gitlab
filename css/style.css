@@ -1,0 +1,205 @@
+
+:root {
+    --bg-color: #1f1e24;
+    --button-color: #326589;
+    --text-title-color: #ececef;
+    --text-description-color: #fc6621;
+    --text-price-color: #002f52;
+    --text-author-color: #858585;
+    --text-tag-color: #9c9c9c;
+}
+
+* {
+    background: var(--bg-color);
+    box-sizing: border-box;
+    padding: 0 0.8rem;
+    margin: 0;
+    font-family:  Helvetica;
+}
+
+.title {
+    margin-top: 10px;
+    padding-left: 0;
+    color: var(--text-title-color);
+}
+
+.title h6 {
+    padding-left: 0;
+    font-weight: 100;
+}
+
+.line-block {
+    width: 100%;
+    height: 0.3px;
+    background: #9c9c9c;
+    display: inline-block;
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* ============================ */
+/*--- organização das cores aleatorias  ---*/
+.bg-one {
+    background-color: #033464;
+}
+
+.bg-two {
+    background-color: #0a4020;
+}
+
+.bg-tree {
+    background-color: #5c2900;
+}
+
+.bg-four {
+    background-color: #660e00;
+}
+
+.bg-five {
+    background-color: #333238;
+}
+.card-word{
+    text-align: center;
+    vertical-align: top;
+    color: #ececef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.5rem;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(251, 250, 253, 0.08);
+    overflow: hidden;
+    flex-shrink: 0;
+    border-style: none;
+    box-shadow: inset 0 0 0 1px rgb(251 250 253 / 10%);
+    cursor: pointer;
+}
+
+/*--- organização das cores aleatorias  ---*/
+/* ============================ */
+
+/*--- organização  ---*/
+.profile-projects{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.row-one{
+    padding-top: 15px;
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+    justify-content: space-between;
+}
+.profile-infos{
+    padding-left: 0;
+    display: flex;
+}
+.profile-icon {
+    display: inline-block;
+    padding: 0;
+}
+
+.initial-words {
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 2rem;
+}
+
+.profile-name{
+    display: flex;
+    padding-left: 0;
+    padding-top: 18px;
+}
+.profile-name h3{
+    color: var(--text-title-color);
+    padding-left: 8px;
+    font-weight: 100;
+}
+.new-project{
+    padding-right: 0;
+    padding-top: 20px;
+}
+.btn-project{
+    color: #fff;
+    border: none;
+    background-color: #428fdc;
+    font-size: 10px;
+    padding: 7px 11px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.row-two{
+    
+    padding-top: 15px;
+    padding-left: 0;
+    color: var(--text-title-color);
+}
+.row-two h6{
+    padding-left: 0;
+    font-weight: 100;
+}
+.row-tree{
+    padding-right: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.row-tree i{
+    color:#858585 ;
+    position: relative;
+    left: 40px;
+    top: 5px;
+}
+.row-tree input{
+    border: 1px solid grey;
+    padding:4px 2px 4px 30px;
+    border-radius: 3px;
+    background-color: #333238;
+    opacity: 0.7;
+}
+/*--- projetos  ---*/
+.list-project{
+    padding: 0;
+}
+.all-projects{
+    display: flex;
+    padding-left: 0;
+}
+.row{
+    display: flex;
+    padding-top: 8px;
+
+}
+.name-project{
+    display: flex;
+
+}
+.initial-words-one{
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1rem;
+}
+
+.h5-name{
+    padding: 15px 0 0 5px;
+    color: var(--text-title-color);
+    font-weight: 100;
+}
+
+.role-project{
+    font-size: 8px;
+    padding-top: 18px;
+    padding-left: 5px;
+    color: var(--text-title-color);
+    font-weight: 100;
+    opacity: 0.5;
+}
+.role-project span{
+    border: 1px solid #fff;
+    padding: 3px 7px;
+    border-radius: 10px;
+
+}
