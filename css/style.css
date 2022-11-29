@@ -1,4 +1,3 @@
-
 :root {
     --bg-color: #1f1e24;
     --button-color: #326589;
@@ -14,7 +13,7 @@
     box-sizing: border-box;
     padding: 0 0.8rem;
     margin: 0;
-    font-family:  Helvetica;
+    font-family: Helvetica;
 }
 
 .title {
@@ -58,7 +57,8 @@
 .bg-five {
     background-color: #333238;
 }
-.card-word{
+
+.card-word {
     text-align: center;
     vertical-align: top;
     color: #ececef;
@@ -81,22 +81,25 @@
 /* ============================ */
 
 /*--- organização  ---*/
-.profile-projects{
+.profile-projects {
     display: flex;
     flex-direction: column;
     padding: 0;
 }
-.row-one{
+
+.row-one {
     padding-top: 15px;
     display: flex;
     padding-left: 0;
     padding-right: 0;
     justify-content: space-between;
 }
-.profile-infos{
+
+.profile-infos {
     padding-left: 0;
     display: flex;
 }
+
 .profile-icon {
     display: inline-block;
     padding: 0;
@@ -108,21 +111,24 @@
     font-size: 2rem;
 }
 
-.profile-name{
+.profile-name {
     display: flex;
     padding-left: 0;
     padding-top: 18px;
 }
-.profile-name h3{
+
+.profile-name h3 {
     color: var(--text-title-color);
     padding-left: 8px;
     font-weight: 100;
 }
-.new-project{
+
+.new-project {
     padding-right: 0;
     padding-top: 20px;
 }
-.btn-project{
+
+.btn-project {
     color: #fff;
     border: none;
     background-color: #428fdc;
@@ -132,64 +138,75 @@
     cursor: pointer;
 }
 
-.row-two{
-    
+.row-two {
+
     padding-top: 15px;
     padding-left: 0;
     color: var(--text-title-color);
 }
-.row-two h6{
+
+.row-two h6 {
     padding-left: 0;
     font-weight: 100;
 }
-.row-tree{
+
+.row-tree {
     padding-right: 0;
     display: flex;
     justify-content: flex-end;
 }
-.row-tree i{
-    color:#858585 ;
+
+.row-tree i {
+    color: #858585;
     position: relative;
     left: 40px;
     top: 5px;
 }
-.row-tree input{
+
+.row-tree input {
     border: 1px solid grey;
-    padding:4px 2px 4px 30px;
+    padding: 4px 2px 4px 30px;
     border-radius: 3px;
     background-color: #333238;
     opacity: 0.7;
 }
+
 /*--- projetos  ---*/
-.list-project{
+.list-project {
     padding: 0;
 }
-.all-projects{
-    display: flex;
-    padding-left: 0;
+
+.all-projects {
+    /* display: grid; */
+    padding: 0 0 0 0;
 }
-.row{
-    display: flex;
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
     padding-top: 8px;
+    padding-right: 0;
 
 }
-.name-project{
+
+.name-project {
     display: flex;
 
 }
-.initial-words-one{
+
+.initial-words-one {
     width: 2.8rem;
     height: 2.8rem;
     font-size: 1rem;
 }
 
-.h5-name{
+.h5-name {
     padding: 15px 0 0 5px;
     color: var(--text-title-color);
     font-weight: 100;
 }
 
-.role-project{
+.role-project {
     font-size: 8px;
     padding-top: 18px;
     padding-left: 5px;
@@ -197,9 +214,54 @@
     font-weight: 100;
     opacity: 0.5;
 }
-.role-project span{
+
+.role-project span {
     border: 1px solid #fff;
     padding: 3px 7px;
     border-radius: 10px;
+
+}
+
+.star-project {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    margin: 0 0 21px 0;
+    visibility: hidden;
+    font-size: 22px;
+    cursor: pointer;
+
+}
+
+.star:before {
+    content: "\2605";
+    position: absolute;
+    visibility: visible;
+    color: #ccc;
+}
+
+.star:checked:before {
+    content: "\2606";
+    position: absolute;
+    color: #ccc;
+}
+.star-label{
+    padding: 0 0 0px 8px;
+    color: #ccc;
+
+}
+.time-project{
+    display: flex;
+    align-items: center;
+    padding-right: 0;
+
+}
+.time-project samp{
+    color: #858585;
+    font-size: 9px;
+    opacity: 0.8;
+    padding-right: 0;
 
 }
