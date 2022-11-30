@@ -13,7 +13,6 @@ async function getApi() {
 function exibeprojetos(listaProjetos) {
     listaProjetos.forEach(element => {
         inserirProjetos.innerHTML += `
-        <!-- projetos  -->
         <div class="all-projects">
             <div class="row">
                 <div class="name-project">
