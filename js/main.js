@@ -1,18 +1,19 @@
-let projetos = []
-const endPointApi = 'https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json'
-getApi()
-const inserirProjetos = document.getElementById('projects')
-const campoDeBusca = document.querySelector("input[type='search']")
+let projetos = [];
+const endPointApi =
+    'https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json';
+getApi();
+const inserirProjetos = document.getElementById('projects');
+const campoDeBusca = document.querySelector("input[type='search']");
 
 async function getApi() {
-    const res = await fetch(endPointApi)
-    projetos = await res.json()
-    console.table(projetos)
-    exibeprojetos(projetos)
+    const res = await fetch(endPointApi);
+    projetos = await res.json();
+    // console.table(projetos)
+    exibeprojetos(projetos);
 }
 
 function exibeprojetos(listaProjetos) {
-    listaProjetos.forEach(element => {
+    listaProjetos.forEach((element) => {
         inserirProjetos.innerHTML += `
         <div class="all-projects">
                 <div class="row">
@@ -42,56 +43,64 @@ function exibeprojetos(listaProjetos) {
                         </div>
                     </div>
                     <div class="star-project">
-                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${projetos.id}"
-                            value="checkedValue">
-                        <label for="checkedValue" class="star-label">1</label>
+                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${element.id}" value="checkedValue">
+                        <label for="checkedValue" id="${element.id + 'label'}"class="star-label"></label>
                     </div>
                     <div class="time-project">
-                        <samp>${element.lastUpdate.substr(11, 5).split('-').reverse().join(':')}</samp>
+                        <samp>${element.lastUpdate
+                .substr(11, 5)
+                .split('-')
+                .reverse()
+                .join(':')
+            }
+                        </samp>
                     </div>
                 </div>
 
                 <span class="line-block"></span>
 
             </div>
-        `
+        `;
     });
+    rodarCheckBoxStatus();
 }
 
 campoDeBusca.addEventListener('keyup', (tecla) => {
-    const procuraLetra = tecla.target.value.toLowerCase()
+    const procuraLetra = tecla.target.value.toLowerCase();
 
     const capturaProjeto = projetos.filter((letra) => {
         return (
             letra.projectName.toLowerCase().includes(procuraLetra) ||
             letra.description.toLowerCase().includes(procuraLetra)
-        )
-    })
-    inserirProjetos.innerHTML = ""
-    exibeprojetos(capturaProjeto)
-})
-
+        );
+    });
+    inserirProjetos.innerHTML = '';
+    exibeprojetos(capturaProjeto);
+});
 
 function salvar() {
     projetos.forEach((i) => {
-        console.log(i.starred)
+        let numeroLabel = document.getElementById(i.id + 'label');
         let favorito = document.getElementById(i.id);
-        console.log(favorito)
         if (favorito.checked) {
+            numeroLabel.innerHTML = 0;
             localStorage.setItem(i.id, JSON.stringify(favorito.checked));
         } else {
             localStorage.setItem(i.id, JSON.stringify(false));
+            numeroLabel.innerHTML = 1;
         }
-    })
+    });
 }
 function rodarCheckBoxStatus() {
     projetos.forEach((i) => {
+        let numeroLabel = document.getElementById(i.id + 'label');
         let favorito = document.getElementById(i.id);
         if (localStorage.getItem(i.id) === 'true') {
-            favorito.checked = true
+            favorito.checked = true;
+            numeroLabel.innerHTML = 0;
         } else {
-            favorito.checked = false
+            favorito.checked = false;
+            numeroLabel.innerHTML = 1;
         }
-    })
+    });
 }
-rodarCheckBoxStatus()
