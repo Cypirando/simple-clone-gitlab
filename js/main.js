@@ -42,7 +42,7 @@ function exibeprojetos(listaProjetos) {
                         </div>
                     </div>
                     <div class="star-project">
-                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id=""
+                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${projetos.id}"
                             value="checkedValue">
                         <label for="checkedValue" class="star-label">1</label>
                     </div>
@@ -70,3 +70,28 @@ campoDeBusca.addEventListener('keyup', (tecla) => {
     inserirProjetos.innerHTML = ""
     exibeprojetos(capturaProjeto)
 })
+
+
+function salvar() {
+    projetos.forEach((i) => {
+        console.log(i.starred)
+        let favorito = document.getElementById(i.id);
+        console.log(favorito)
+        if (favorito.checked) {
+            localStorage.setItem(i.id, JSON.stringify(favorito.checked));
+        } else {
+            localStorage.setItem(i.id, JSON.stringify(false));
+        }
+    })
+}
+function rodarCheckBoxStatus() {
+    projetos.forEach((i) => {
+        let favorito = document.getElementById(i.id);
+        if (localStorage.getItem(i.id) === 'true') {
+            favorito.checked = true
+        } else {
+            favorito.checked = false
+        }
+    })
+}
+rodarCheckBoxStatus()
