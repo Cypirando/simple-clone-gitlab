@@ -37,7 +37,7 @@
 }
 
 /* ============================ */
-/*--- organização das cores aleatorias  ---*/
+/*--- otimização das cores aleatorias  ---*/
 .bg-one {
     background-color: #033464;
 }
@@ -77,7 +77,7 @@
     cursor: pointer;
 }
 
-/*--- organização das cores aleatorias  ---*/
+/*--- otimização das cores aleatorias  ---*/
 /* ============================ */
 
 /*--- organização  ---*/
@@ -177,13 +177,12 @@
 }
 
 .all-projects {
-    /* display: grid; */
-    padding: 0 0 0 0;
+    padding: 0;
 }
 
 .row {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: 3fr 1fr auto;
     padding-top: 8px;
     padding-right: 0;
 
@@ -247,18 +246,21 @@
     position: absolute;
     color: #ccc;
 }
-.star-label{
+
+.star-label {
     padding: 0 0 0px 8px;
     color: #ccc;
 
 }
-.time-project{
+
+.time-project {
     display: flex;
     align-items: center;
     padding-right: 0;
 
 }
-.time-project samp{
+
+.time-project samp {
     color: #858585;
     font-size: 9px;
     opacity: 0.8;
