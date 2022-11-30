@@ -2,6 +2,7 @@ let projetos = []
 const endPointApi = 'https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json'
 getApi()
 const inserirProjetos = document.getElementById('projects')
+const campoDeBusca = document.querySelector("input[type='search']")
 
 async function getApi() {
     const res = await fetch(endPointApi)
@@ -56,3 +57,16 @@ function exibeprojetos(listaProjetos) {
         `
     });
 }
+
+campoDeBusca.addEventListener('keyup', (tecla) => {
+    const procuraLetra = tecla.target.value.toLowerCase()
+
+    const capturaProjeto = projetos.filter((letra) => {
+        return (
+            letra.projectName.toLowerCase().includes(procuraLetra) ||
+            letra.description.toLowerCase().includes(procuraLetra)
+        )
+    })
+    inserirProjetos.innerHTML = ""
+    exibeprojetos(capturaProjeto)
+})

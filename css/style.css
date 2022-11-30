@@ -170,6 +170,7 @@
     border-radius: 3px;
     background-color: #333238;
     opacity: 0.7;
+    color: #fff;
 }
 
 /*--- projetos  ---*/
@@ -193,28 +194,32 @@
 
 }
 
-.card-project{
+.card-project {
     display: flex;
     align-items: center;
     padding-left: 0;
 
 }
+
 .initial-words-one {
     width: 2.8rem;
     height: 2.8rem;
     font-size: 1rem;
 }
-.line-description{
+
+.line-description {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     padding-left: 0;
 
 }
-.line-name{
+
+.line-name {
     display: flex;
     padding-left: 0;
 }
+
 .h5-name {
     padding: 15px 0 0 0;
     color: var(--text-title-color);
@@ -247,7 +252,7 @@
     background-color: transparent;
     font-size: 10px;
     padding: 0;
-    
+
 }
 
 .star-project {
