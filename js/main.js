@@ -151,4 +151,3 @@ function timeSince(date) {
   return Math.floor(seconds) + " segundos";
 }
 let aDay = 24*60*60*1000;
-// console.log(timeSince(new Date(Date.now()-aDay)));
