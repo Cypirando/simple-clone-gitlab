@@ -15,7 +15,7 @@ async function getApi() {
 function exibeprojetos(listaProjetos) {
   listaProjetos.forEach((element, i) => {
     timeSince(element.lastUpdate)
-    console.log(timeSince(new Date(Date.now()-aDay)));
+    // console.log(timeSince(new Date(Date.now()-aDay)));
 
 
     inserirProjetos.innerHTML += `
@@ -123,7 +123,7 @@ function rodarCheckBoxStatus(teste) {
 }
 
 function timeSince(date) {
-// console.log(date)
+console.log(date)
 
   let seconds = Math.floor((new Date() - date) / 1000);
 
