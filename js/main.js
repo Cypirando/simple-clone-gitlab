@@ -69,12 +69,12 @@ function exibeprojetos(listaProjetos) {
 }
 
 campoDeBusca.addEventListener('keyup', (tecla) => {
-  const procuraLetra = tecla.target.value.toLowerCase();
-
+  const procuraLetra = tecla.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  console.log(procuraLetra)
   const capturaProjeto = projetos.filter((letra) => {
     return (
-      letra.projectName.toLowerCase().includes(procuraLetra) ||
-      letra.description.toLowerCase().includes(procuraLetra)
+      letra.projectName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(procuraLetra) ||
+      letra.description.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(procuraLetra)
     );
   });
   inserirProjetos.innerHTML = '';
@@ -82,7 +82,6 @@ campoDeBusca.addEventListener('keyup', (tecla) => {
   exibeprojetos(capturaProjeto);
   rodarCheckBoxStatus(capturaProjeto);
 });
-
 function salvar() {
   projetos.forEach((i) => {
     let numeroLabel = document.getElementById(i.id + 'label');
