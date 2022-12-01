@@ -39,25 +39,30 @@
 
 /* ============================ */
 /*--- otimização das cores aleatorias  ---*/
-.bg-one {
-    background-color: #033464;
+.bg-0 {
+    background-color: #333238;
 }
 
-.bg-two {
+.bg-1 {
     background-color: #0a4020;
 }
 
-.bg-tree {
+.bg-2 {
     background-color: #5c2900;
 }
 
-.bg-four {
+.bg-3 {
     background-color: #660e00;
 }
 
-.bg-five {
-    background-color: #333238;
+.bg-4 {
+    background-color: #033464;
 }
+
+.bg-5 {
+    background-color: #420d3c;
+}
+
 
 .card-word {
     text-align: center;

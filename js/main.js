@@ -14,7 +14,7 @@ async function getApi() {
 }
 
 function exibeprojetos(listaProjetos) {
-  listaProjetos.forEach((element) => {
+  listaProjetos.forEach((element,i) => {
     inserirProjetos.innerHTML += `
         <div class="all-projects">
                 <div class="row">
@@ -22,7 +22,7 @@ function exibeprojetos(listaProjetos) {
                         <div class="card-project">
                             <i class="fal fa-door-open"
                                 style="padding: 2px 8px 0 0; font-size: 18px;opacity: 0.6; color:#fff;"></i>
-                            <div class="bg-tree card-word initial-words-one">
+                            <div class="bg-${i} card-word initial-words-one">
                             ${element.projectName.split('')[0]}
                             </div>
                         </div>
