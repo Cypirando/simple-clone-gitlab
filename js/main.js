@@ -1,8 +1,8 @@
 let projetos = [];
 const endPointApi =
-  'https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json';
+  "https://raw.githubusercontent.com/daniel-prando/simple-clone-gitlab/main/projetos.json";
 getApi();
-const inserirProjetos = document.getElementById('projects');
+const inserirProjetos = document.getElementById("projects");
 const campoDeBusca = document.querySelector("input[type='search']");
 
 async function getApi() {
@@ -14,6 +14,10 @@ async function getApi() {
 
 function exibeprojetos(listaProjetos) {
   listaProjetos.forEach((element, i) => {
+    timeSince(element.lastUpdate)
+    console.log(timeSince(new Date(Date.now()-aDay)));
+
+
     inserirProjetos.innerHTML += `
         <div class="all-projects">
                 <div class="row">
@@ -22,7 +26,7 @@ function exibeprojetos(listaProjetos) {
                             <i class="fal fa-door-open"
                                 style="padding: 2px 8px 0 0; font-size: 18px;opacity: 0.6; color:#fff;"></i>
                             <div class="bg-${i} card-word initial-words-one">
-                              ${element.projectName.split('')[0]}
+                              ${element.projectName.split("")[0]}
                             </div>
                         </div>
                         <div class="line-description">
@@ -43,17 +47,15 @@ function exibeprojetos(listaProjetos) {
                         </div>
                     </div>
                     <div class="star-project">
-                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${element.id
-      }" value="checkedValue">
-                        <label for="checkedValue" id="${element.id + 'label'
-      }"class="star-label">0</label>
+                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${
+                          element.id
+                        }" value="checkedValue">
+                        <label for="checkedValue" id="${
+                          element.id + "label"
+                        }"class="star-label">0</label>
                     </div>
                     <div class="time-project">
-                        <samp>${element.lastUpdate
-        .substr(11, 5)
-        .split('-')
-        .reverse()
-        .join(':')}
+                        <samp>${timeSince(new Date(Date.now()-aDay))}
                         </samp>
                     </div>
                 </div>
@@ -65,37 +67,36 @@ function exibeprojetos(listaProjetos) {
   });
 }
 
-campoDeBusca.addEventListener('keyup', (tecla) => {
+campoDeBusca.addEventListener("keyup", (tecla) => {
   const procuraLetra = tecla.target.value
     .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
   const capturaProjeto = projetos.filter((letra) => {
     return (
       letra.projectName
         .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
         .includes(procuraLetra) ||
       letra.description
         .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
         .includes(procuraLetra)
     );
   });
-  inserirProjetos.innerHTML = '';
+  inserirProjetos.innerHTML = "";
   exibeprojetos(capturaProjeto);
   rodarCheckBoxStatus(capturaProjeto);
 });
 
-
 function salvar() {
   projetos.forEach((i) => {
-    let numeroLabel = document.getElementById(i.id + 'label');
+    let numeroLabel = document.getElementById(i.id + "label");
     let favorito = document.getElementById(i.id);
     if (favorito === null) {
-      return
+      return;
     } else {
       if (favorito.checked) {
         numeroLabel.innerHTML = 0;
@@ -109,9 +110,9 @@ function salvar() {
 }
 function rodarCheckBoxStatus(teste) {
   teste.forEach((i) => {
-    let numeroLabel = document.getElementById(i.id + 'label');
+    let numeroLabel = document.getElementById(i.id + "label");
     let favorito = document.getElementById(i.id);
-    if (localStorage.getItem(i.id) === 'true') {
+    if (localStorage.getItem(i.id) === "true") {
       favorito.checked = true;
       numeroLabel.innerHTML = 0;
     } else {
@@ -120,3 +121,34 @@ function rodarCheckBoxStatus(teste) {
     }
   });
 }
+
+function timeSince(date) {
+// console.log(date)
+
+  let seconds = Math.floor((new Date() - date) / 1000);
+
+  let interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " anos atrás";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " mês atrás";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " dia atrás";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " hora atrás";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " minutos";
+  }
+  return Math.floor(seconds) + " segundos";
+}
+let aDay = 24*60*60*1000;
+// console.log(timeSince(new Date(Date.now()-aDay)));
