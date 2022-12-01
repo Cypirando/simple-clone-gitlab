@@ -8,13 +8,12 @@ const campoDeBusca = document.querySelector("input[type='search']");
 async function getApi() {
   const res = await fetch(endPointApi);
   projetos = await res.json();
-  console.log(projetos);
   exibeprojetos(projetos);
   rodarCheckBoxStatus(projetos);
 }
 
 function exibeprojetos(listaProjetos) {
-  listaProjetos.forEach((element,i) => {
+  listaProjetos.forEach((element, i) => {
     inserirProjetos.innerHTML += `
         <div class="all-projects">
                 <div class="row">
@@ -23,7 +22,7 @@ function exibeprojetos(listaProjetos) {
                             <i class="fal fa-door-open"
                                 style="padding: 2px 8px 0 0; font-size: 18px;opacity: 0.6; color:#fff;"></i>
                             <div class="bg-${i} card-word initial-words-one">
-                            ${element.projectName.split('')[0]}
+                              ${element.projectName.split('')[0]}
                             </div>
                         </div>
                         <div class="line-description">
@@ -39,24 +38,22 @@ function exibeprojetos(listaProjetos) {
                                 </div>
                             </div>
                             <div class="description-project">
-                                <sub>${element.description}</sub>
+                              <sub>${element.description}</sub>
                             </div>
                         </div>
                     </div>
                     <div class="star-project">
-                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${
-                          element.id
-                        }" value="checkedValue">
-                        <label for="checkedValue" id="${
-                          element.id + 'label'
-                        }"class="star-label">0</label>
+                        <input type="checkbox" class="star" onclick="salvar()" name="curtir" id="${element.id
+      }" value="checkedValue">
+                        <label for="checkedValue" id="${element.id + 'label'
+      }"class="star-label">0</label>
                     </div>
                     <div class="time-project">
                         <samp>${element.lastUpdate
-                          .substr(11, 5)
-                          .split('-')
-                          .reverse()
-                          .join(':')}
+        .substr(11, 5)
+        .split('-')
+        .reverse()
+        .join(':')}
                         </samp>
                     </div>
                 </div>
@@ -69,29 +66,44 @@ function exibeprojetos(listaProjetos) {
 }
 
 campoDeBusca.addEventListener('keyup', (tecla) => {
-  const procuraLetra = tecla.target.value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-  console.log(procuraLetra)
+  const procuraLetra = tecla.target.value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
   const capturaProjeto = projetos.filter((letra) => {
     return (
-      letra.projectName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(procuraLetra) ||
-      letra.description.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(procuraLetra)
+      letra.projectName
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .includes(procuraLetra) ||
+      letra.description
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .includes(procuraLetra)
     );
   });
   inserirProjetos.innerHTML = '';
-  console.log(capturaProjeto)
   exibeprojetos(capturaProjeto);
   rodarCheckBoxStatus(capturaProjeto);
 });
+
+
 function salvar() {
   projetos.forEach((i) => {
     let numeroLabel = document.getElementById(i.id + 'label');
     let favorito = document.getElementById(i.id);
-    if (favorito.checked) {
-      numeroLabel.innerHTML = 0;
-      localStorage.setItem(i.id, JSON.stringify(favorito.checked));
+    if (favorito === null) {
+      return
     } else {
-      localStorage.setItem(i.id, JSON.stringify(false));
-      numeroLabel.innerHTML = 1;
+      if (favorito.checked) {
+        numeroLabel.innerHTML = 0;
+        localStorage.setItem(i.id, JSON.stringify(favorito.checked));
+      } else {
+        localStorage.setItem(i.id, JSON.stringify(false));
+        numeroLabel.innerHTML = 1;
+      }
     }
   });
 }
